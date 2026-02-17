@@ -1,0 +1,36 @@
+{
+  "manifest_version": 3,
+  "name": "Screen Text Extractor",
+  "description": "Extract visible text, detect YouTube subtitles, and OCR screen captures.",
+  "version": "1.0.0",
+  "permissions": [
+    "activeTab",
+    "scripting",
+    "tabs",
+    "storage"
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Screen Text Extractor"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["libs/*.js"],
+      "matches": ["<all_urls>"]
+    }
+  ]
+
+}
